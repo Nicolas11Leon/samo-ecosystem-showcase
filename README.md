@@ -64,18 +64,18 @@ The codebase strictly adheres to **Clean Architecture** combined with **Domain-D
 
 ```mermaid
 graph TD
-    subgraph Presentation Layer ["Presentation Layer (Flutter)"]
+    subgraph PresentationLayer ["Presentation Layer (Flutter)"]
         UI["Pages & Custom Widgets"]
         BLOC["BLoC State Managers (Events / States)"]
     end
 
-    subgraph Domain Layer ["Domain Layer (Pure Dart)"]
+    subgraph DomainLayer ["Domain Layer (Pure Dart)"]
         UC["UseCases (Isolated Business Logic)"]
         REPO_INT["Repository Interfaces (Abstract Contracts)"]
         ENTITIES["Domain Entities"]
     end
 
-    subgraph Data Layer ["Data Layer"]
+    subgraph DataLayer ["Data Layer"]
         REPO_IMPL["Repository Implementations"]
         DS_REMOTE["Remote DataSources (Supabase / REST)"]
         DS_LOCAL["Local DataSources / Cache (Prefs, SecureStorage)"]
@@ -100,7 +100,8 @@ graph TD
     DS_REMOTE -->|Events| SB_RT
     DS_REMOTE -->|Push Notifications| FCM
     UI -->|Interacts| HW
-    Presentation Layer -.->|Shielded by| RASP
+    PresentationLayer -.->|Shielded by| RASP
+
 ```
 
 ### Key Architectural Tenets
